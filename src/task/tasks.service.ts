@@ -6,7 +6,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 
 @Injectable()
-export class TaskService {
+export class TasksService {
   constructor(
     @InjectModel(Task.name)
     private taskModel: mongoose.Model<Task>,

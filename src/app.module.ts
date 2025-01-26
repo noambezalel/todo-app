@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { TaskModule } from './task/task.module';
+import { TasksModule } from './task/tasks.module';
+import { UsersModule } from './users/users.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -8,7 +9,8 @@ dotenv.config();
 @Module({
   imports: [
     MongooseModule.forRoot(process.env.MONGO_CONNECTION_STRING),
-    TaskModule,
+    TasksModule,
+    UsersModule,
   ],
 })
 export class AppModule {}
