@@ -18,7 +18,7 @@ export class UsersController {
 
   @Post()
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
-    return this.usersService.create(createUserDto);
+    return this.usersService.createUser(createUserDto);
   }
 
   @Get()
@@ -36,11 +36,11 @@ export class UsersController {
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<User> {
-    return this.usersService.update(+id, updateUserDto);
+    return this.usersService.updateUser(+id, updateUserDto);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string): Promise<User> {
-    return this.usersService.remove(id);
+    return this.usersService.removeUser(id);
   }
 }
