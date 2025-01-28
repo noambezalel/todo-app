@@ -3,14 +3,16 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
+  HttpStatus,
   Param,
   Post,
   Put,
 } from '@nestjs/common';
-import { TasksService } from '../../services/tasks/tasks.service';
-import { Task } from '../../schemas/task.schema';
-import { CreateTaskDto } from '../../dto/CreateTask.dto';
-import { UpdateTaskDto } from '../../dto/UpdateTask.dto';
+import { TasksService } from 'src/task/services/tasks/tasks.service';
+import { Task } from 'src/task/schemas/task.schema';
+import { CreateTaskDto } from 'src/task/dto/CreateTask.dto';
+import { UpdateTaskDto } from 'src/task/dto/UpdateTask.dto';
 
 @Controller('tasks')
 export class TaskController {
@@ -22,7 +24,12 @@ export class TaskController {
 
   @Get(':id')
   async getTask(@Param('id') id: string): Promise<Task> {
-    return this.tasksService.getTask(id);
+    const task: Task = await this.tasksService.getTask(id);
+    if (task) return task;
+    throw new HttpException(
+      `Task not found by id: ${id}`,
+      HttpStatus.BAD_REQUEST,
+    );
   }
 
   @Post()

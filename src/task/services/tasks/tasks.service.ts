@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { UpdateTaskDto } from './dto/update-task.dto';
-import { CreateTaskDto } from './dto/create-task.dto';
-import { Task } from './schemas/task.schema';
+import { UpdateTaskDto } from 'src/task/dto/UpdateTask.dto';
+import { CreateTaskDto } from 'src/task/dto/CreateTask.dto';
+import { Task } from 'src/task/schemas/task.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 
