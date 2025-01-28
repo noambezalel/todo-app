@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { TasksModule } from './task/tasks.module';
+import { TasksModule } from './tasks/tasks.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
