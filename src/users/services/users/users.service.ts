@@ -18,6 +18,6 @@ export class UsersService {
   }
 
   async getUserByUsername(username: string) {
-    return this.users.find((user) => user.username === username);
+    return new User(this.users.find((user) => user.username === username));
   }
 }

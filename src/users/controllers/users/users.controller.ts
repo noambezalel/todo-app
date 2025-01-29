@@ -26,9 +26,9 @@ export class UsersController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('/:username')
-  async getUserByUsername(@Param('username') username: string) {
+  async getUserByUsername(@Param('username') username: string): Promise<User> {
     const user: User = await this.usersService.getUserByUsername(username);
-    if (user) return new User(user);
+    if (user) return user;
     throw new HttpException(
       `User "${username}" not found`,
       HttpStatus.BAD_REQUEST,
